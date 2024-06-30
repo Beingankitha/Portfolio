@@ -1,10 +1,10 @@
 import React from 'react';
 import { BsLinkedin } from 'react-icons/bs';
 import { Pagination } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react/swiper-react'
+import { Swiper, SwiperSlide } from 'swiper/react'
 
-import 'swiper/swiper.min.css'
-import 'swiper/modules/pagination/pagination.min.css'
+import 'swiper/css'
+import 'swiper/css/pagination'
 
 // Import Swiper styles
 //import 'swiper/css';
