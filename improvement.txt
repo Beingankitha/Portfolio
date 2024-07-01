@@ -1,0 +1,3 @@
+Projects Section:
+
+Include detailed descriptions, technologies used, challenges faced, and solutions implemented for each project. Add links to live projects or repositories.

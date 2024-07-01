@@ -193,7 +193,7 @@ h1 {
 }
 
 section {
-  margin-top: 7rem;
+  margin-top: 9rem;
 }
 
 section > h2,
@@ -248,7 +248,7 @@ img {
   }
 
   section {
-    margin-top: 6rem;
+    margin-top: 7rem;
   }
 }
 
@@ -257,9 +257,13 @@ img {
     width: var(--container-width-sm);
   }
 
-  section:nth-of-type(1),
-  section:nth-of-type(2) {
-    margin-top: -3rem; /* Adjust this value as needed */
+  section:nth-of-type(0),
+  section:nth-of-type(1) {
+    margin-top: -100px; /* Adjust this value as needed */
+  }
+
+  section {
+    margin-top: 5rem;
   }
 
   section > h2 {

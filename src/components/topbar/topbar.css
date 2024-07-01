@@ -1,35 +1,62 @@
 nav {
-  background: rgba(0, 0, 0, 0.7); 
-  color: var(--color-white);
-  width: max-content;
-  display: block;
-  padding: 0.5rem 1.7rem;
-  z-index: 2;
-  position: fixed;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 1rem;
-  display: flex;
-  gap: 0.5rem;
-  border-radius: 2rem;
-  backdrop-filter: blur(15px);
+    background: rgba(0, 0, 0, 0.7);
+    color: var(--color-white);
+    width: max-content;
+    display: block;
+    padding: 0.5rem 1.7rem;
+    z-index: 2;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    border-radius: 2rem;
+    backdrop-filter: blur(15px);
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s, transform 0.3s;
 }
 
 nav a {
-  background: transparent;
-  padding: 0.9rem;
-  border-radius: 50%;
-  display: flex;
-  color: var(--color-white);
-  font-size: 1.1rem;
+    background: transparent;
+    padding: 0.9rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+    font-size: 1.1rem;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s, transform 0.3s;
 }
 
 nav a:hover {
-  background: rgba(255, 255, 255, 0.15); /* Slight white overlay on hover */
-  color: var(--color-bg);
+    background: rgba(255, 255, 255, 0.3);
+    color: var(--color-bg);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    transform: scale(1.1);
 }
 
 nav a.active {
-  background: var(--color-bg);
-  color: var(--color-black);
+    background: var(--color-bg);
+    color: var(--color-black);
+}
+
+nav.inverted {
+    background: rgba(255, 255, 255, 0.85);
+    color: var(--color-black);
+}
+
+nav.inverted a {
+    color: var(--color-black);
+}
+
+nav.inverted a:hover {
+    background: rgba(0, 0, 0, 0.6);
+    color: var(--color-bg);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    transform: scale(1.1);
+}
+
+nav.inverted a.active {
+    background: var(--color-black);
+    color: var(--color-bg);
 }
