@@ -57,10 +57,30 @@ header {
 @media screen and (max-width: 600px){
   header {
     height: 100vh;
+    position: relative; /* Ensures the header is the positioning context */
   }
 
-  .header__socials,
+  .header__socials {
+    display: flex; /* Make sure it is visible */
+    position: absolute; /* Absolute positioning relative to the header */
+    left: -1rem; /* Align to the far left */
+    top: 50%; /* Move to the middle of the header */
+    transform: translateY(-50%); /* Center it vertically */
+    flex-direction: column; /* Maintain column layout for vertical stacking */
+    gap: 0.5rem; /* Adjust spacing between icons */
+    padding-left: 1rem; /* Add some padding to avoid touching the screen edge */
+  }
+
   .scroll__down {
-    display: none;
+    display: flex; /* Make sure it is visible */
+    position: absolute; /* Absolute positioning relative to the header */
+    right: 5rem; /* Align to the far right */
+    top: 50%; /* Move to the middle of the header */
+    transform: translateY(-90%)rotate(90deg); /* Center it vertically and keep it rotated */
+    flex-direction: column;
+    padding-right: 1rem; /* Add some padding to avoid touching the screen edge */
+    visibility: visible; /* Ensure it is not hidden */
+    opacity: 1; /* Ensure it is fully opaque */
+    /* border: 1px solid red; Temporary border for debugging */
   }
 }
