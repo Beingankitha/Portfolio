@@ -6,7 +6,7 @@ import Header from './components/header/Header';
 import Intro from './components/intro/Intro';
 import Education from './components/education/Education';
 import Portfolio from './components/portfolio/Portfolio';
-import Testimonials from './components/testimonials/Testimonials';
+// import Testimonials from './components/testimonials/Testimonials';
 import Topbar from './components/topbar/Topbar';
 
 
@@ -19,7 +19,7 @@ const App = () => {
       <Education />
       <Experience />
       <Portfolio />
-      <Testimonials />
+      {/* <Testimonials /> */}
       <Contact />
       <Footer />
     </>
