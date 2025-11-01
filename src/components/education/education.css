@@ -1,0 +1,43 @@
+.education {
+    padding-top: 2rem;
+}
+
+.vertical-timeline-element--work h3,
+.vertical-timeline-element--work h5,
+.vertical-timeline-element--education h3,
+.vertical-timeline-element--education h5 {
+    color: var(--color-black);
+}
+
+.vertical-timeline-element-content {
+    background: var(--color-bg) !important;
+    border: 1px solid var(--color-primary) !important;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+.vertical-timeline::before {
+    background: var(--color-primary) !important;
+}
+
+.vertical-timeline-element-content-arrow {
+    border-right-color: var(--color-primary) !important;
+}
+
+.vertical-timeline-element-icon {
+    background: var(--color-primary) !important;
+    color: var(--color-bg) !important;
+}
+
+/* Dark theme specific styles */
+body.dark-theme .vertical-timeline-element-content {
+    background: var(--color-bg-variant) !important;
+    border: 1px solid var(--color-primary) !important;
+}
+
+body.dark-theme .vertical-timeline-element--work h3,
+body.dark-theme .vertical-timeline-element--work h5,
+body.dark-theme .vertical-timeline-element--education h3,
+body.dark-theme .vertical-timeline-element--education h5,
+body.dark-theme .vertical-timeline-element-date {
+    color: var(--color-primary) !important;
+}

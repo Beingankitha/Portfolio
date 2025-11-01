@@ -8,11 +8,13 @@ import Education from './components/education/Education';
 import Portfolio from './components/portfolio/Portfolio';
 // import Testimonials from './components/testimonials/Testimonials';
 import Topbar from './components/topbar/Topbar';
-
+import { ThemeProvider } from './context/ThemeContext';
+import ThemeToggle from './components/theme/ThemeToggle';
 
 const App = () => {
   return (
-    <>
+    <ThemeProvider>
+      <ThemeToggle />
       <Header />
       <Topbar />
       <Intro />
@@ -22,7 +24,7 @@ const App = () => {
       {/* <Testimonials /> */}
       <Contact />
       <Footer />
-    </>
+    </ThemeProvider>
   )
 }
 

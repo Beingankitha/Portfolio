@@ -1,5 +1,5 @@
 nav {
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.6);
     color: var(--color-white);
     width: max-content;
     display: block;
@@ -16,6 +16,12 @@ nav {
     transition: background-color 0.3s, color 0.3s, box-shadow 0.3s, transform 0.3s;
 }
 
+/* Dark theme nav styles */
+body.dark-theme nav {
+    background: rgba(255, 255, 255, 0.6);
+    color: var(--color-black);
+}
+
 nav a {
     background: transparent;
     padding: 0.9rem;
@@ -28,35 +34,110 @@ nav a {
     transition: background-color 0.3s, color 0.3s, box-shadow 0.3s, transform 0.3s;
 }
 
+nav a svg {
+    width: 1.1rem;
+    height: 1.1rem;
+    color: inherit;
+    fill: currentColor;
+}
+
 nav a:hover {
-    background: rgba(255, 255, 255, 0.3);
-    color: var(--color-bg);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--color-white);
     transform: scale(1.1);
 }
 
 nav a.active {
-    background: var(--color-bg);
+    background: var(--color-white);
     color: var(--color-black);
 }
 
-nav.inverted {
-    background: rgba(255, 255, 255, 0.85);
+/* Dark theme nav links */
+body.dark-theme nav a {
     color: var(--color-black);
+}
+
+body.dark-theme nav a svg {
+    color: var(--color-black);
+}
+
+body.dark-theme nav a:hover {
+    background: rgba(0, 0, 0, 0.2);
+    color: var(--color-black);
+}
+
+body.dark-theme nav a.active {
+    background: var(--color-black);
+    color: var(--color-white);
+}
+
+body.dark-theme nav a.active svg {
+    color: var(--color-white);
+}
+
+/* When nav is over footer */
+nav.inverted {
+    background: rgba(255, 255, 255, 0.9);
 }
 
 nav.inverted a {
     color: var(--color-black);
 }
 
+nav.inverted a svg {
+    color: var(--color-black);
+}
+
 nav.inverted a:hover {
-    background: rgba(0, 0, 0, 0.6);
-    color: var(--color-bg);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.2);
+    color: var(--color-black);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     transform: scale(1.1);
 }
 
 nav.inverted a.active {
     background: var(--color-black);
-    color: var(--color-bg);
+    color: var(--color-white);
 }
+
+nav.inverted a.active svg {
+    color: var(--color-white);
+}
+
+/* Dark theme inverted nav */
+body.dark-theme nav.inverted {
+    background: rgba(0, 0, 0, 0.9);
+}
+
+body.dark-theme nav.inverted a {
+    /* In dark theme variables are inverted: use --color-black which resolves to white in dark mode */
+    color: var(--color-black);
+}
+
+body.dark-theme nav.inverted a svg {
+    color: var(--color-black);
+    fill: currentColor;
+}
+
+body.dark-theme nav.inverted a:hover {
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.08);
+    color: var(--color-black);
+}
+
+body.dark-theme nav.inverted a:hover svg {
+    color: var(--color-black);
+    fill: currentColor;
+}
+
+body.dark-theme nav.inverted a.active {
+    background: var(--color-white);
+    color: var(--color-black);
+}
+
+body.dark-theme nav.inverted a.active svg {
+    color: var(--color-black);
+    fill: currentColor;
+}
+
+

@@ -1,24 +1,41 @@
 footer {
-    background: rgba(0, 0, 0, 0.85); /* Making it transparent like the topbar */
+    background: var(--color-white);
     padding: 3rem 0;
     text-align: center;
     font-size: 0.9rem;
     margin-top: 7rem;
 }
 
-footer a, .footer__logo, .footer__copyright {
-    color: var(--color-bg); 
+/* Light theme specific styles */
+:root footer {
+    background: rgba(0, 0, 0, 0.85);
+}
+
+:root footer a,
+:root .footer__logo,
+:root .footer__copyright {
+    color: var(--color-bg);
     transition: color 0.3s ease;
 }
 
+/* Dark theme specific styles */
+body.dark-theme footer {
+    background: rgba(255, 255, 255, 0.95);
+}
+
+body.dark-theme footer a,
+body.dark-theme .footer__logo,
+body.dark-theme .footer__copyright {
+    color: var(--color-bg);
+}
+
 footer a {
-    color: var(--color-bg);  /* This will be white */
     text-decoration: none;
 }
 
 footer a:hover {
-    color: rgba(255, 255, 255, 0.6); 
-    text-decoration: underline; 
+    color: var(--color-light-black);
+    text-decoration: underline;
 }
 
 .permalinks, .footer__socials a {
@@ -53,16 +70,35 @@ footer a:hover {
     padding: 0.8rem;
     border-radius: 0.7rem;
     display: flex;
-    background: rgba(252, 252, 252, 0.9);  /* Removing the background */
+    background: var(--color-bg);
     color: var(--color-black);
-    border: none;  /* Removing the border */
+    border: 1px solid transparent;
+    transition: var(--transition);
 }
 
-.footer__socials a:hover {
-    border: 1px solid white;
-    background: rgba(0, 0, 0, 0.3);  
-    color: rgba(252, 252, 252, 0.9); 
-    border-color: none;
+/* Light theme social icons */
+:root .footer__socials a {
+    background: var(--color-white);
+    color: var(--color-black);
+}
+
+:root .footer__socials a:hover {
+    background: transparent;
+    border-color: var(--color-white);
+    color: var(--color-white);
+}
+
+/* Dark theme social icons */
+body.dark-theme .footer__socials a {
+    background: var(--color-white);
+    color: var(--color-black);
+    border: 1px solid var(--color-black);
+}
+
+body.dark-theme .footer__socials a:hover {
+    background: var(--color-black);
+    border-color: var(--color-black);
+    color: var(--color-white);
 }
 
 .footer__copyright {
