@@ -135,35 +135,45 @@
     background-color: transparent;
     border: 1px solid var(--color-black);
     border-radius: 5px;
-    overflow: hidden;
+    overflow: visible; /* allow label to be visible */
     height: 10px;
     position: relative;
 }
 
 .progress {
+    /* start collapsed; animate to --target when .in-view is present */
+    width: 0;
     height: 100%;
-    background-color: var(--color-black);
+    background-color: var(--progress-fill, var(--color-primary, var(--color-black)));
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: flex-end;
     color: var(--color-white);
     margin-right: 5px;
     padding-right: 5px;
+    border-radius: 4px;
+    transition: width 900ms cubic-bezier(.2,.8,.2,1);
+}
+
+/* When the container gets the in-view class we expand to the target width */
+.experience__container.in-view .progress{
+    width: var(--target);
 }
 
 .progress:hover {
-    background: rgba(0, 0, 0, 0.6);
-    color: var(--color-bg);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transform: scale(1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
 }
 
 .progress span {
     font-size: 12px;
     line-height: 1;
-    position: absolute;
+    position: relative; /* placed inside the filled area */
     right: 5px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .progress { transition: none; }
 }
 
 @media screen and (max-width: 1024px) {

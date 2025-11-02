@@ -1,6 +1,6 @@
 header {
   height: 100%;
-  padding-top: 6.7rem;
+  padding-top: 5.5rem; /* reduced whitespace to tighten hero */
   overflow: hidden;
 }
 
@@ -11,11 +11,81 @@ header {
   line-height: 1.7;
 }
 
+/* Subtle glass/gradient card behind header content */
+.header__container::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 6%;
+  width: min(1100px, 86%);
+  height: 300px;
+  border-radius: 28px;
+  background: linear-gradient(135deg, var(--hero-gradient-start), var(--hero-gradient-end));
+  box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+  z-index: -1;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Dark theme variant for the hero background */
+/* dark theme variant uses variables defined in index.css */
+body.dark-theme .header__container::before {
+  background: linear-gradient(135deg, var(--hero-gradient-start), var(--hero-gradient-end));
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
 .cta {
   display: flex;
   justify-content: center;
   gap: 1.2rem;
-  margin-top: 2.5rem;
+  margin-top: 1rem; /* bring CTAs closer to the name */
+}
+
+/* CTA button polish: contrast, hover micro-interactions and focus styles */
+.cta .btn {
+  padding: 0.6rem 1.1rem;
+  border-radius: 0.6rem;
+  font-weight: 600;
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+  background: transparent;
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease, color 180ms ease;
+}
+
+.cta .btn:hover,
+.cta .btn:focus-visible {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+.cta .btn:focus-visible {
+  outline: none;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12), 0 0 0 4px rgba(51,51,51,0.06);
+}
+
+/* Primary CTA (filled) */
+.cta .btn-primary {
+  background: var(--color-primary);
+  color: var(--color-bg);
+  border-color: var(--color-primary);
+}
+
+.cta .btn-primary:hover,
+.cta .btn-primary:focus-visible {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+  filter: brightness(1.03);
+}
+
+/* Dark theme adjustments for CTA shadows and focus rings */
+body.dark-theme .cta .btn:hover,
+body.dark-theme .cta .btn:focus-visible {
+  box-shadow: 0 8px 20px rgba(255,255,255,0.03);
+}
+
+body.dark-theme .cta .btn:focus-visible {
+  box-shadow: 0 6px 18px rgba(255,255,255,0.04), 0 0 0 4px rgba(255,255,255,0.03);
 }
 
 .header__socials {
@@ -35,6 +105,60 @@ header {
   background: var(--color-black);
 }
 
+/* Social icon micro-interactions */
+.header__socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  color: var(--color-primary);
+  transition: transform 220ms cubic-bezier(.2,.9,.2,1), box-shadow 220ms ease, background 220ms ease, color 220ms ease;
+  position: relative;
+  text-decoration: none;
+}
+
+.header__socials a svg {
+  width: 16px;
+  height: 16px;
+  color: currentColor;
+  fill: currentColor;
+}
+
+.header__socials a::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  background: transparent;
+  transition: background 220ms ease, opacity 220ms ease, transform 220ms ease;
+}
+
+.header__socials a:hover {
+  transform: translateY(-4px) scale(1.05);
+  z-index: 2;
+  /* give the anchor a contrasting background and invert the icon color */
+  background: var(--color-primary);
+  color: var(--color-bg);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+}
+
+.header__socials a:hover::before {
+  opacity: 0; /* hide the subtle overlay when using a solid background */
+}
+
+body.dark-theme .header__socials a:hover {
+  /* in dark mode var(--color-primary) is light, so icon will be dark (var(--color-bg)) */
+  background: var(--color-primary);
+  color: var(--color-bg);
+}
+
+.header__socials a:focus-visible {
+  outline: none;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
 .scroll__down {
   position: absolute;
   right: 4rem;
@@ -42,6 +166,69 @@ header {
   transform: rotate(90deg);
   font-weight: 350;
   font-size: 0.9rem;
+}
+
+/* Tagline under the subtitle */
+.header__tagline {
+  margin: 0.45rem 0 0.8rem;
+  color: var(--color-light-black);
+  font-size: 0.95rem;
+  letter-spacing: 0.6px;
+}
+
+.header__tagline::before {
+  content: '';
+  display: inline-block;
+  width: 36px;
+  height: 1px;
+  background: rgba(0,0,0,0.06);
+  vertical-align: middle;
+  margin-right: 0.9rem;
+}
+
+body.dark-theme .header__tagline::before {
+  background: rgba(255,255,255,0.06);
+}
+
+/* Typed subtitle styling in header */
+.header__container .typed {
+  color: var(--color-primary);
+  font-size: clamp(1rem, 2.2vw, 1.3rem);
+  font-weight: 600;
+  line-height: 1; 
+}
+
+.header__container .cursor {
+  display: inline-block;
+  height: 1em;         /* 1em equals current font-size of .typed */
+  width: 0.26rem;
+  background: var(--color-primary);
+  margin-left: 6px;
+  vertical-align: middle;
+  animation: blink 1s steps(2, start) infinite;
+}
+
+/* Ensure subtitle (typed line) aligns perfectly with heading center */
+.header__container h5.text-light {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 0.25rem 0 0.6rem; /* tighten spacing */
+}
+
+/* Make typed span inline-block so flex alignment works reliably */
+.header__container .typed {
+  display: inline-block;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* Respect user's reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .header__container .cursor { animation: none; }
 }
 
 @media screen and (max-width: 1024px){

@@ -25,6 +25,13 @@
   --container-width-lg: 70%;
   --container-width-md: 86%;
   --container-width-sm: 90%;
+  /* Hero gradient (light theme) */
+  --hero-gradient-start: rgba(255,255,255,0.9);
+  --hero-gradient-end: rgba(245,245,245,0.6);
+  /* Portfolio glow (light theme) */
+  --portfolio-glow-start: #ff6bb2;
+  --portfolio-glow-end: #ff6bb2;
+  --portfolio-glow-shadow: rgba(255, 107, 178, 0.4);
 }
 
 /* Dark Theme */
@@ -36,6 +43,13 @@ body.dark-theme {
   --color-black: #ffffff;
   --color-white: #000000;
   --color-light-black: #bdbdbd;
+  /* Hero gradient (dark theme) */
+  --hero-gradient-start: rgba(18,18,18,0.9);
+  --hero-gradient-end: rgba(31,31,31,0.6);
+  /* Portfolio glow (dark theme) - cyan/blue for contrast */
+  --portfolio-glow-start: #00d9ff;
+  --portfolio-glow-end: #0099cc;
+  --portfolio-glow-shadow: rgba(0, 217, 255, 0.4);
 }
 
 html {
@@ -67,6 +81,7 @@ h6 {
 
 h1 {
   font-size: 2.5rem;
+  font-weight: 700;
   font-family: 'Monotype Corsiva', 'Apple Chancery', 'ITC Zapf Chancery', 'URW Chancery L', cursive;
   font-style: italic;
   text-transform: capitalize;

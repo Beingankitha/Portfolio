@@ -77,7 +77,7 @@
 
 // export default Experience
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaSass, FaPython, FaPhp, FaGithub } from 'react-icons/fa';
 import { SiFlask, SiDjango, SiCsharp, SiJquery } from 'react-icons/si';
 import './experience.css';
@@ -103,11 +103,32 @@ const skills = [
 ];
 
 const Experience = () => {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          el.classList.add('in-view');
+          // we can unobserve after animation triggers
+          observer.unobserve(el);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    observer.observe(el);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section id="experience">
       <h5>The Skills I Have</h5><br/>
       <h2>Skills</h2>
-      <div className="container experience__container">
+      <div ref={containerRef} className="container experience__container">
         {skills.map((skillCategory, index) => (
           <div key={index} className={`experience__${skillCategory.category.toLowerCase().replace(/ /g, '_')}`}>
             <h3>{skillCategory.category}</h3>
@@ -118,8 +139,15 @@ const Experience = () => {
                     <span className="experience__details-icon">{skill.icon}</span>
                     <h4>{skill.name}</h4>
                   </div>
-                  <div className="progress-bar">
-                    <div className="progress" style={{ width: skill.level }}>
+                  <div
+                    className="progress-bar"
+                    role="progressbar"
+                    aria-valuemin={0}
+                    aria-valuemax={100}
+                    aria-valuenow={parseInt(skill.level, 10)}
+                    aria-label={`${skill.name} proficiency ${skill.level}`}
+                  >
+                    <div className="progress" style={{ ['--target']: skill.level }}>
                       <span>{skill.level}</span>
                     </div>
                   </div>
