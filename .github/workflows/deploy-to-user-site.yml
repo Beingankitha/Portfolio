@@ -1,0 +1,38 @@
+name: Deploy production to beingankitha.github.io
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Optional build (uncomment if needed)
+        # If your site needs building (npm/yarn/hugo), uncomment and edit the next lines.
+        # run: |
+        #   npm ci
+        #   npm run build
+
+      - name: Prepare production directory
+        run: |
+          rm -rf out
+          mkdir out
+          # If you have a build output folder (e.g. build/ or public/), copy that instead:
+          # rsync -av --exclude='.git' build/ out/
+          rsync -av --exclude='.git' --exclude='.github' --exclude='node_modules' ./ out/
+
+      - name: Deploy to user site repo
+        env:
+          DEPLOY_PAT: ${{ secrets.DEPLOY_PAT }}
+        run: |
+          cd out
+          git init
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add -A
+          git commit -m "Deploy from Portfolio: $GITHUB_REPOSITORY@$GITHUB_SHA" || true
+          git push --force "https://x-access-token:${DEPLOY_PAT}@github.com/beingankitha/beingankitha.github.io.git" HEAD:main
